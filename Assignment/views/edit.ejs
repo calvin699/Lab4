@@ -1,0 +1,95 @@
+<%- include('layout', {content: ''}) %>
+
+<div class="container">
+    <div class="row">
+    <div class="col">
+        <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/home">Home</a></li>
+            <li class="breadcrumb-item"><a href="/event">Events</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Edit Event</li>
+        </ol>
+        </nav>
+    </div> 
+    <div class="col">
+        <form action="/event/delete/<%= event._id %>" method="POST">
+            <button type="submit" class="btn btn-danger float-end">Delete</button>
+        </form>
+    </div>
+    </div>
+</div>
+
+<div class="container">
+<form id="neweventform" action="/event/edit/<%= event._id %>" method="POST">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="row mb-3">
+        <div class="col-sm-10">
+            <label for="title" class="col-sm-2 col-form-label">Event title</label>
+            <input type="text" class="form-control" name="title" id="title" value="<%= event.title %>" required>
+        </div>
+      </div>
+      
+      <div class="row mb-3">
+        <div class="col-sm-10">
+            <label for="organizer" class="col-sm-2 col-form-label">Organizer</label>
+            <input type="text" class="form-control" name="organizer" id="organizer" value="<%= event.organizer %>" required>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-sm-10">
+            <label for="datetime" class="col-sm-2 col-form-label">Datetime</label>
+            <input type="text" class="form-control" name="datetime" id="datetime" value=<%= event.datetime %> required>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-sm-10">
+            <label for="location" class="col-sm-2 col-form-label">Location</label>
+            <input type="text" class="form-control" name="location" id="location" value=<%= event.location %> required>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-sm-10">
+            <% if(event.highlight) { %>
+                <input class="form-check-input" type="checkbox" id="highlight" name="highlight" checked>
+            <% } else { %>
+                <input class="form-check-input" type="checkbox" id="highlight" name="highlight">
+            <% } %>
+            <label class="form-check-label" for="gridCheck1">Highlight</label>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-sm-6">
+      <div class="row mb-3">
+        <div class="col-sm-10">
+            <label for="description" class="col-sm-7 col-form-label">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="5" style="resize: none"><%= event.description %></textarea>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-sm-10">
+            <label for="quota" class="col-sm-7 col-form-label">Quota</label>
+            <input type="number" class="form-control" name="quota" id="quota" value="<%= event.quota %>" required>     
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-sm-10">
+            <label for="image" class="col-sm-7 col-form-label">Image</label>
+            <input type="text" class="form-control" name="image" id="image" value="<%= event.image %>">     
+        </div>
+      </div>
+
+      <div class="row mb-3">
+          <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
+      </div>
+
+    </div>
+  </div>
+</form>
+</div>

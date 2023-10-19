@@ -1,0 +1,66 @@
+<%- include('layout', {content: '' }) %>
+  <div class="container mb-3">
+    <div id="carouselControls" class="carousel slide" data-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselControls" data-bs-slide-to="0" class="active" aria-current="true"
+          aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselControls" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselControls" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <% var firstImage=true; %>
+          <% for (var event of events) { %>
+            <% if (firstImage) { %>
+              <div class="carousel-item active">
+                <% firstImage=false %>
+                  <% } else { %>
+                    <div class="carousel-item">
+                      <% } %>
+                        <a href="/event/detail/<%= event._id %>">
+                          <img class="d-block w-100" src="<%= event.image %>">
+                        </a>
+                    </div>
+                    <% } %>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselControls"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselControls"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+      </div>
+    </div>
+
+    <div class="container">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Recent</a>
+        </li>
+      </ul>
+      <div class="justify-content-center">
+        <div class="row mb-3">
+          <% for (var event of events) { %>
+            <div class="card card-custom col-sm-4">
+              <a href="/event/detail/<%= event._id %>">
+                <img src="<%= event.image %>" class="card-img-top">
+              </a>
+              <div class="card-body">
+                <h5 class="card-title">
+                  <%= event.title %>
+                </h5>
+                <p class="card-text">
+                  <%= event.description %>
+                </p>
+                <% mDate=new Date(event.modifiedAt) %>
+                  <p class="card-text">Last updated: <%= mDate.getDate() %>/<%= mDate.getMonth() %>/<%=
+                          mDate.getFullYear() %>
+                  </p>
+              </div>
+            </div>
+            <% } %>
+        </div>
+      </div>

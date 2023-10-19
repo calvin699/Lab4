@@ -1,0 +1,51 @@
+<%- include('layout', {content: '' }) %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/home">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/event">Events</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Event Detail</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="mt-5 justify-content-center">
+            <div class="row mx-md-n5">
+                <div class="card card-custom col-sm-6">
+                    <div class="card-body">
+                        <h5 class="card-title" style="font-size: 50px">
+                            <%= event.title %>
+                        </h5>
+                        <p class="card-text">
+                            <%= event.organizer %>
+                        </p>
+                        <p class="card-text">
+                            <%= event.description %>
+                        </p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Datetime: <%= event.datetime %>
+                            </li>
+                            <li class="list-group-item">Location: <%= event.location %>
+                            </li>
+                            <li class="list-group-item">Quota: <%= event.quota %>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card card-custom col-sm-6" style="margin: 0 10 0 10;">
+                    <img src="https://i0.wp.com/communitytechnetwork.org/wp-content/uploads/Volunteer_kate1.png?fit=800%2C600&ssl=1"
+                        class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Become a volunteer!</h5>
+                        <p class="card-text">Your time and talent can make a real different in people's life.</p>
+                    </div>
+                </div>
+            </div>
+        </div>

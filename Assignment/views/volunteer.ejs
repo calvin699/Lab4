@@ -1,0 +1,88 @@
+<% let content=` <div class="container">
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/home">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Become volunteer</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <form action="/volunteer" method="POST">
+                    <label for="email" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-md-10">
+                        <input type="email" class="form-control" id="inputemail3" name="email" required>
+                    </div>
+
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-md-10">
+                        <input type="password" class="form-control" name="password" id="inputPassword3">
+                    </div>
+
+                    <label for="name" class="col-sm-2 col-form-label">Name</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" name="name" id="inputPassword3">
+                    </div>
+
+                    <label for="contact" class="col-sm-5 col-form-label">Contact</label>
+                    <div class="col-md-10">
+                        <input type="phone" class="form-control" name="contact" id="inputPassword3">
+                    </div>
+
+
+                    <label class="col-sm-5 col-form-label">Age Group</label>
+                    <div class="col-sm-10">
+                        <select class="form-select" name="AgeGroup" aria-label="Default select example"
+                            onchange="teamSelected(this.value) " required>
+                            <option value="" selected disabled>Select age group</option>
+                            <option value="1-17">1-17</option>
+                            <option value="18-30">18-30</option>
+                            <option value="31-60">31-60</option>
+                            <option value="60-90">60-90</option>
+                        </select>
+                    </div>
+
+
+                    <label class="col-sm-10 col-form-label">About me and remark</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" id="aboutme" name="aboutme" rows="5"
+                            style="resize: none"></textarea>
+                    </div>
+
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="gridCheck1" name="terms" required>
+                            <label class="form-check-label" for="gridCheck1">
+                                Agree to terms and conditions
+                            </label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </form>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card card-custom col-sm-10"">
+            <img src="
+                    https://i0.wp.com/communitytechnetwork.org/wp-content/uploads/Volunteer_kate1.png?fit=800%2C600&ssl=1"
+                    class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Become a volunteer!</h5>
+                        <p class="card-text">Your time and talent can make a real different in people's life.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    `;
+    %>
+
+    <%- include('layout', {content: content}) %>

@@ -1,0 +1,74 @@
+<% let content=` <div class="container">
+  <div class="row">
+    <div class="col">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/home">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Events</li>
+        </ol>
+      </nav>
+    </div>
+    <div class="col">
+      <form action="/event/new" method="GET">
+        <button type="submit" class="btn btn-primary float-end">New</button>
+      </form>
+    </div>
+  </div>
+  </div>
+
+  `;
+  %>
+
+  <%- include('layout', {content: content}) %>
+
+
+    <div class="container">
+      <div class="mt-5 justify-content-center">
+        <div class="row">
+          <% for (var event of events) { %>
+            <div class="card card-custom col-sm-4">
+              <a href="/event/detail/<%= event._id %>">
+                <img src="<%= event.image %>" class="card-img-top">
+              </a>
+              <div class="card-body">
+                <h5 class="card-title">
+                  <%= event.title %>
+                </h5>
+                <p class="card-text">
+                  <%= event.description %>
+                </p>
+
+                <div class="row">
+                  <div class="col-sm-8">
+                    <% mDate=new Date(event.modifiedAt) %>
+                      <p class="card-text">Last updated: <%= mDate.getDate() %>/<%= mDate.getMonth() %>/<%=
+                              mDate.getFullYear() %>
+                      </p>
+                  </div>
+                  <div class="col-sm-4">
+                    <a href="/event/edit/<%= event._id %>" class="btn btn-primary float-end">Edit</a>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <% } %>
+        </div>
+      </div>
+
+      <div class="container mt-5">
+        <ul class="pagination">
+          <% for (let i=1; i <=Math.ceil(total / perPage); i++) { %>
+            <% if(i===page) { %>
+              <li class="page-item disabled"><a class="page-link" href="/event?page=<%= i %>&perPage=<%= perPage %>">
+                  <%= i %>
+                </a></li>
+              <% } else { %>
+                <li class="page-item"><a class="page-link" href="/event?page=<%= i %>&perPage=<%= perPage %>">
+                    <%= i %>
+                  </a></li>
+                <% } %>
+                  <% } %>
+        </ul>
+
+      </div>
